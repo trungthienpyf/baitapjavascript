@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+      #btn-css:hover {
+        opacity: 0.9;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <form>
+        <input
+          type="text"
+          id="lay_kq"
+          style="margin-bottom: 6px; outline: none; padding: 6px"
+          placeholder="Xin moi nhap"
+        />
+
+        <br />
+        <button
+          id="btn-css"
+          type="button"
+          onclick="in_ra()"
+          style="
+            background-color: #09a59a;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 2px;
+            color: white;
+          "
+        >
+          Kiem tra
+        </button>
+      </form>
+      <p id="in_ra_kq"></p>
+      <script type="text/javascript">
+        document.getElementById("lay_kq").onkeypress = function (e) {
+          if (e.which === 13) {
+            in_ra();
+            e.preventDefault();
+          }
+        };
+        var check = 0;
+
+        function in_ra() {
+          let ketQua = document.getElementById("lay_kq").value;
+          let inputE = document.getElementById("lay_kq");
+          let giaTri = parseFloat(ketQua);
+          let outPut = document.getElementById("in_ra_kq");
+          if (!Number(giaTri)) {
+            outPut.innerHTML = "day khong phai la so";
+          } else {
+            outPut.innerHTML = "<h4> </h4>";
+            if (giaTri % 2 == 0) {
+              outPut.innerHTML += "Day la so chan";
+            } else {
+              outPut.innerHTML += "Day la so le";
+            }
+            outPut.innerHTML += "<br/>";
+
+            if (Number.isInteger(giaTri)) {
+              outPut.innerHTML += "Day la nguyen";
+            } else {
+              outPut.innerHTML += "Day la thap phan";
+            }
+            outPut.innerHTML += "<br/>";
+
+            outPut.innerHTML += "In ra day so: ";
+            if (giaTri === 0) {
+              outPut.innerHTML = outPut.innerHTML;
+            } else if (giaTri > 0) {
+              for (let i = 1; i <= giaTri; i++) {
+                outPut.innerHTML += i + " ";
+              }
+            } else {
+              for (let i = giaTri; i < 2; i++) {
+                outPut.innerHTML += i + " ";
+              }
+            }
+            outPut.innerHTML += "<br/>";
+            check++;
+            outPut.innerHTML += "So lan da nhap " + check;
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
