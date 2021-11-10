@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>bt2</title>
+	<style type="text/css">
+		#main{
+			width: 500px;
+			max-width: 100%;
+			height: 300px;
+			margin: 20px auto;
+		 	box-shadow: 1px 1px 6px rgb(0 0 0 / 28%);
+background-color: #237785;
+
+		}
+			
+	</style>
+</head>
+<body>
+	<div id="main">
+		<form id="form_css" >
+		<h3 style="text-align: center;">Tính toán</h3>
+		<input id="input_num" type="text" style="margin-left:18px ; outline: none;">
+		<button id="input_btn" type="button" onclick="in_ra()">Thêm</button>
+		</form>
+	<div>
+		<div style="margin-left:18px;">
+			Mảng:
+			<div id="mang">	
+			</div>
+			Max:
+			<div id="max">	
+			</div>
+			Min:
+			<div id="min">	
+			</div>
+			Tổng:
+			<div id="tong">	
+			</div>
+		</div>
+	</div>
+	</div>
+	<script type="text/javascript">
+	
+		let mang=[];
+		function in_ra() {	
+				let num= parseInt(document.getElementById('input_num').value);
+				let array=document.getElementById('mang');
+				let max=document.getElementById('max');
+				let min=document.getElementById('min');
+				let tong=document.getElementById('tong');
+
+		
+				document.getElementById('input_num').value='';
+				let so_random;
+				
+				for(let i=0;i<num;i++){
+					so_random=Math.floor(Math.random()*20);
+					mang.push(so_random);
+				}
+				array.innerHTML=mang;
+				
+				let max_first=mang[0];
+				for(let i=0;i<mang.length;i++){
+					if(max_first<mang[i]){
+						max_first=mang[i];
+					}
+				}
+				max.innerHTML=max_first;
+
+				let min_first=mang[0];
+
+				for(let i=0;i<mang.length;i++){
+					if(min_first>mang[i]){
+						min_first=mang[i];
+					}
+				}
+				min.innerHTML=min_first;
+				let sum=0;
+				for(let i=0;i<mang.length;i++){
+					sum+=mang[i];
+				}
+				tong.innerHTML=sum;
+		}
+
+
+		
+
+	</script>
+</body>
+</html>
