@@ -54,7 +54,7 @@ background-color: #237785;
 		
 				document.getElementById('input_num').value='';
 				let so_random;
-				
+				if(num/1!==num) return false;
 				for(let i=0;i<num;i++){
 					so_random=Math.floor(Math.random()*20);
 					mang.push(so_random);
