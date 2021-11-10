@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BT1</title>
+	<style type="text/css">
+		#main{
+			width: 500px;
+			max-width: 100%;
+			height: 300px;
+			margin: 20px auto;
+		 	box-shadow: 1px 1px 6px rgb(0 0 0 / 28%);
+background-color: #237785;
+
+		}
+			
+	</style>
+</head>
+<body>
+	<div id="main">
+		<form id="form_css" >
+		<h3 style="text-align: center;">Tính toán</h3>
+		<input id="input_num" type="text" style="margin-left:18px ; outline: none;">
+		<button id="input_btn" type="button" onclick="in_ra()">Thêm</button>
+		</form>
+	<div>
+		<div style="margin-left:18px;">
+			Số chẳn:
+			<div id="chan" >	
+			</div>
+			Số lẻ:
+			<div id="le" >	
+			</div>
+			Tổng:
+			<div id="tong" >	
+			</div>
+			Max:
+			<div id="max" >	
+			</div>
+			Số nguyên tố:
+			<div id="snt" >	
+			</div>
+		</div>
+	</div>
+	</div>
+	<script type="text/javascript">
+		document.getElementById("input_num").onkeypress = function (e) {
+          if (e.which === 13) {
+            in_ra();
+            e.preventDefault();
+          }
+        };
+		let sum=0;
+		let mang=[];
+		function in_ra() {
+			
+			
+			let result=document.getElementById('input_num');
+			
+			let num= parseInt(result.value);
+			let chan=document.getElementById('chan');
+			let le=document.getElementById('le');
+			let tong=document.getElementById('tong');
+			let snt=document.getElementById('snt');
+			let output_css=document.getElementById('output_css');
+			mang.push(num);
+			result.value='';
+			
+			let khoangcach =' ';
+			if(num/1!==num) return false;
+			
+			if(num%2==0) chan.innerHTML+=khoangcach +num;
+			else le.innerHTML+=khoangcach +num;
+
+			sum +=num;
+			tong.innerHTML = sum;
+
+			let first=mang[0];
+			for(let i=0;i<mang.length;i++){
+				if(first<mang[i])
+					first=mang[i];
+			}
+			max.innerHTML= first;
+			let dem=0;
+			for(let i=1;i<=num;i++){
+				if(num%i==0)
+					dem++;
+			}
+			if(dem==2) snt.innerHTML += khoangcach+ num;
+
+		}
+	</script>
+</body>
+</html>
