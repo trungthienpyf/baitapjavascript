@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.flex{
+			display: flex;
+			min-height: 100vh;
+			justify-content: center;
+			background: #f1f1f1;
+		}
+		.form-css{
+			width: 360px;
+			background: #fff;
+			min-height: 100px;
+			align-self: center;
+			padding: 30px 24px;
+			box-shadow: 0 2px 5px 0 rgb(63 73 84 / 10%);
+			border-radius: 2px;
+		}
+		.form-group{
+			display: flex;
+			flex-direction: column;
+		}
+		.center{
+			text-align: center;
+			font-size:25px;
+		}
+		.name{
+			outline: none;
+			margin: 6px 0;
+			padding: 8px;
+		}
+		.form-radio{
+			margin: 8px 0;
+			
+		}
+		.btn-css{
+			margin-top:16px ;
+			width: 100%;
+			padding: 10px;
+			background: #b17b7b;
+			border: none;
+			color: #fff;
+			border-radius: 2px;
+			cursor: pointer;
+		}
+		.red{
+			color: red;
+			margin-bottom: 6px;
+		}
+		.warning{
+			outline: none;
+			margin: 6px 0;
+			padding: 8px;
+			border:1.5px  solid #f33a58 ;
+		}
+		.span-css{
+
+		}
+	</style>
+</head>
+<body>
+	<div class="flex"> 
+		<form id="form" class="form-css">
+			<h2 class="center">Form đăng ký</h2>
+			<div class="form-group">
+				<label for="input_name">Họ tên đầy đủ</label>
+				<input id="input_name" class="name" type="text" placeholder="VD: Nguyễn Trung Thiện">
+				<span id='loi_name' class="red"></span>
+			</div>
+			<span>Giới tính</span>
+
+			<div class="form-radio">
+				<input type="radio" name="gioi_tinh">Nam
+				<input type="radio" name="gioi_tinh">Nữ
+				<input type="radio" name="gioi_tinh">Khác
+			</div>
+			<span id='loi_gt' class="red"></span>
+			<div class="form-group">
+				<label for="input_address">Địa chỉ</label>
+				<input id="input_address" class="name" type="text" placeholder="VD: Phú Yên">
+				<span id='loi_dc' class="red"></span>
+			</div>
+			<div class="form-group">
+				<label for="input_email">Email</label>
+				<input id="input_email" class="name" type="email" placeholder="VD: email@domain.com">
+				<span id='loi_email' class="red"></span>
+			</div>
+			<div class="form-group">
+				<label for="input_password">Mật khẩu</label>
+				<input id="input_password" class="name" type="password" placeholder="Nhập mật khẩu">
+				<span id='loi_password' class="red"></span>
+			</div>
+			<span>Sở thích</span>
+			<select>
+				<option>Chơi game</option>
+				<option>Xem phim</option>
+				<option>Nghe nhạc</option>
+			</select>	
+		<br> 
+		<button id="btn" class="btn-css" type="submit">Đăng ký</button>
+		</form>
+	</div>
+
+<script type="text/javascript">
+
+	document.getElementById('btn').onclick=function(e){
+		
+		kiem_tra();
+		e.preventDefault();
+	}
+	function kiem_tra(){
+		let name=document.getElementById('input_name').value;
+		if(name.length===0){
+			document.getElementById('loi_name').innerText='Tên không được để trống';
+			document.getElementById('input_name').classList.add('warning');
+		}
+		else{
+			let regexName=/^[A-ZÀ|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ|È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ|Ì|Í|Ị|Ỉ|Ĩ|Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ|Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ|Ỳ|Ý|Ỵ|Ỷ|Ỹ|Đ][a-zà|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|ì|í|ị|ỉ|ĩ|ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|ỳ|ý|ỵ|ỷ|ỹ]*([ ][A-ZÀ|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ|È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ|Ì|Í|Ị|Ỉ|Ĩ|Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ|Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ|Ỳ|Ý|Ỵ|Ỷ|Ỹ|Đ][a-zà|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|ì|í|ị|ỉ|ĩ|ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|ỳ|ý|ỵ|ỷ|ỹ]*)*$/;
+			if(!regexName.test(name)){
+				document.getElementById('loi_name').innerText='Tên không hợp lệ';
+				document.getElementById('input_name').classList.add('warning');
+			}
+			else{
+				document.getElementById('loi_name').innerText='';
+				ocument.getElementById('input_name').classList.remove('warning');
+			}
+			
+		}
+
+		let array_gt=document.getElementsByName('gioi_tinh');
+		let kiem_tra_gt=false;
+		for(let i=0;i<array_gt.length;i++){
+			if(array_gt[i].checked){
+				kiem_tra_gt=true;
+			}
+		}
+		if(kiem_tra_gt==false){
+			document.getElementById('loi_gt').innerText='Hãy chọn giới tính';
+			// document.getElementById('input_name').classList.add('warning');
+		}else{
+			document.getElementById('loi_gt').innerText='';
+		}
+
+		let address=document.getElementById('input_address').value;
+		if(address.length===0){
+			document.getElementById('loi_dc').innerText='Hãy nhập địa chỉ';
+			document.getElementById('input_address').classList.add('warning');
+
+		}else{
+			document.getElementById('loi_dc').innerText='';
+			document.getElementById('input_address').classList.remove('warning');
+		}
+
+		let email=document.getElementById('input_email').value;
+		if(email.length===0){
+			document.getElementById('loi_email').innerText='Hãy nhập email';
+			document.getElementById('input_email').classList.add('warning');
+		}else{
+			let regaxMail=/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+			if(!regaxMail.test(email)){
+				document.getElementById('loi_email').innerText='Email không hợp lệ';
+				document.getElementById('input_email').classList.add('warning');
+			}
+			else{
+				document.getElementById('loi_email').innerText='';
+				document.getElementById('input_email').classList.remove('warning');
+			}
+		}
+		let password=document.getElementById('input_password').value;
+		if(password.length===0){
+			document.getElementById('loi_password').innerText='Hãy nhập password';
+			document.getElementById('input_password').classList.add('warning');
+		}else if(password.length<6){
+			document.getElementById('loi_password').innerText='Mật khẩu không được quá ngắn';
+			document.getElementById('input_password').classList.add('warning');
+		}else{
+			document.getElementById('loi_password').innerText='';
+			document.getElementById('input_password').classList.remove('warning');
+		}
+
+
+	}
+</script>
+</body>
+</html>
