@@ -77,9 +77,9 @@
 			<span>Giới tính</span>
 
 			<div class="form-radio">
-				<input type="radio" name="gioi_tinh" class="check-radio">Nam
-				<input type="radio" name="gioi_tinh" class="check-radio">Nữ
-				<input type="radio" name="gioi_tinh" class="check-radio">Khác
+				<input type="radio" name="gioi_tinh" id="check-radio1">Nam
+				<input type="radio" name="gioi_tinh" id="check-radio2">Nữ
+				<input type="radio" name="gioi_tinh" id="check-radio3">Khác
 			</div>
 			<span id='loi_gt' class="red"></span>
 			<div class="form-group">
@@ -139,7 +139,15 @@
 			
 		}
 		let array_gt=document.getElementsByName('gioi_tinh');
-		
+			document.querySelectorAll('#check-radio1,#check-radio2,#check-radio3').forEach((ele) =>{
+				ele.addEventListener('change', e => {
+			    if(e.target.checked){
+			    	console.log(e);
+			        document.getElementById('loi_gt').innerText='';
+			    }
+				});
+			})
+			
 		let kiem_tra_gt=false;
 		for(let i=0;i<array_gt.length;i++){
 			if(array_gt[i].checked){
