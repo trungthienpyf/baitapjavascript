@@ -60,6 +60,9 @@
 		.span-css{
 
 		}
+		.none-active{
+			display: none;
+		}
 	</style>
 </head>
 <body>
@@ -74,9 +77,9 @@
 			<span>Giới tính</span>
 
 			<div class="form-radio">
-				<input type="radio" name="gioi_tinh">Nam
-				<input type="radio" name="gioi_tinh">Nữ
-				<input type="radio" name="gioi_tinh">Khác
+				<input type="radio" name="gioi_tinh" class="check-radio">Nam
+				<input type="radio" name="gioi_tinh" class="check-radio">Nữ
+				<input type="radio" name="gioi_tinh" class="check-radio">Khác
 			</div>
 			<span id='loi_gt' class="red"></span>
 			<div class="form-group">
@@ -101,7 +104,7 @@
 				<option>Nghe nhạc</option>
 			</select>	
 		<br> 
-		<button id="btn" class="btn-css" type="submit">Đăng ký</button>
+		<button id="btn" class="btn-css" type="button">Đăng ký</button>
 		</form>
 	</div>
 
@@ -112,8 +115,13 @@
 		kiem_tra();
 		e.preventDefault();
 	}
+
 	function kiem_tra(){
 		let name=document.getElementById('input_name').value;
+		document.getElementById('input_name').oninput= function(){
+			document.getElementById('loi_name').innerText='';
+			document.getElementById('input_name').classList.remove('warning');
+		}
 		if(name.length===0){
 			document.getElementById('loi_name').innerText='Tên không được để trống';
 			document.getElementById('input_name').classList.add('warning');
@@ -126,26 +134,33 @@
 			}
 			else{
 				document.getElementById('loi_name').innerText='';
-				ocument.getElementById('input_name').classList.remove('warning');
+				document.getElementById('input_name').classList.remove('warning');
 			}
 			
 		}
 
-		let array_gt=document.getElementsByName('gioi_tinh');
 		let kiem_tra_gt=false;
 		for(let i=0;i<array_gt.length;i++){
 			if(array_gt[i].checked){
+				
 				kiem_tra_gt=true;
 			}
 		}
-		if(kiem_tra_gt==false){
-			document.getElementById('loi_gt').innerText='Hãy chọn giới tính';
-			// document.getElementById('input_name').classList.add('warning');
-		}else{
+		if(kiem_tra_gt==true){
 			document.getElementById('loi_gt').innerText='';
+			
+			
+		}else{
+			document.getElementById('loi_gt').innerText='Hãy chọn giới tính';
+			
 		}
 
+
 		let address=document.getElementById('input_address').value;
+		document.getElementById('input_address').oninput= function(){
+			document.getElementById('loi_dc').innerText='';
+			document.getElementById('input_address').classList.remove('warning');
+		}
 		if(address.length===0){
 			document.getElementById('loi_dc').innerText='Hãy nhập địa chỉ';
 			document.getElementById('input_address').classList.add('warning');
@@ -156,6 +171,10 @@
 		}
 
 		let email=document.getElementById('input_email').value;
+		document.getElementById('input_email').oninput= function(){
+			document.getElementById('loi_email').innerText='';
+			document.getElementById('input_email').classList.remove('warning');
+		}
 		if(email.length===0){
 			document.getElementById('loi_email').innerText='Hãy nhập email';
 			document.getElementById('input_email').classList.add('warning');
@@ -171,6 +190,10 @@
 			}
 		}
 		let password=document.getElementById('input_password').value;
+			document.getElementById('input_password').oninput= function(){
+			document.getElementById('loi_password').innerText='';
+			document.getElementById('input_password').classList.remove('warning');
+		}
 		if(password.length===0){
 			document.getElementById('loi_password').innerText='Hãy nhập password';
 			document.getElementById('input_password').classList.add('warning');
