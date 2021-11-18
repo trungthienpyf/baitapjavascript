@@ -104,7 +104,7 @@
 				<option>Nghe nhạc</option>
 			</select>	
 		<br> 
-		<button id="btn" class="btn-css" type="button">Đăng ký</button>
+		<button id="btn" class="btn-css" type="submit">Đăng ký</button>
 		</form>
 	</div>
 
@@ -138,7 +138,8 @@
 			}
 			
 		}
-
+		let array_gt=document.getElementsByName('gioi_tinh');
+		
 		let kiem_tra_gt=false;
 		for(let i=0;i<array_gt.length;i++){
 			if(array_gt[i].checked){
